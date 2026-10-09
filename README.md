@@ -1,5 +1,7 @@
 # КОИНОТИ НАВ — 35 лет
 
+Сайт: https://billsharifzade.github.io/koinotBBday/
+
 Праздничная страница к 35-летию Группы компаний «КОИНОТИ НАВ» (1991 — 2026).
 Фирменные цвета, шрифт DIN Pro и логотипы взяты с [koinotinav.tj](https://koinotinav.tj/).
 
