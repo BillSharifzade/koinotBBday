@@ -37,6 +37,7 @@ Cloudflare Worker ([`bot/`](bot/src/index.js)). Токен бота хранит
 - Сайт отправляет поздравления на `POST /congrats` Worker'а (принимает запросы только с сайта и localhost,
   не чаще одного раза в 30 секунд с одного адреса).
 - Подписчики и очередь рассылки — в Durable Object с SQLite; рассылка идёт пачками, чтобы не упереться в лимиты Telegram.
+- Сколько подписчиков и поздравлений: `curl https://kn-anniversary-bot.sharifzadebilal.workers.dev/stats -H "Authorization: Bearer <WEBHOOK_SECRET>"`.
 
 Изменения в `bot/` выкатываются сами (`.github/workflows/deploy-bot.yml`), если в репозитории есть секрет
 `CLOUDFLARE_API_TOKEN` (Cloudflare → My Profile → API Tokens → шаблон «Edit Cloudflare Workers»).

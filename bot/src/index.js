@@ -26,6 +26,12 @@ export default {
     }
 
     if (pathname === '/congrats') return congratsFromSite(request, env, hub);
+    if (pathname === '/stats') {
+      if (request.headers.get('Authorization') !== `Bearer ${env.WEBHOOK_SECRET}`) {
+        return new Response('Forbidden', { status: 403 });
+      }
+      return Response.json(await hub.stats());
+    }
     if (pathname === '/') return new Response(`@${env.BOT_USERNAME} is running`);
     return new Response('Not found', { status: 404 });
   }
@@ -186,6 +192,11 @@ export class Hub extends DurableObject {
 
     const { left } = this.sql.exec('SELECT COUNT(*) AS left FROM outbox').one();
     if (left) await this.ctx.storage.setAlarm(Date.now() + pause);
+  }
+
+  stats() {
+    const count = table => this.sql.exec(`SELECT COUNT(*) AS n FROM ${table}`).one().n;
+    return { subscribers: count('subscribers'), congrats: count('congrats'), queued: count('outbox') };
   }
 
   forget(chatId) {
