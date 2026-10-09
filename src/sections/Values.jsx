@@ -6,7 +6,7 @@ export default function Values() {
     <section className="section section--plum values" aria-labelledby="values-title">
       <div className="container">
         <div className="section-head">
-          <Reveal as="p" className="eyebrow eyebrow--light">05 — Наши ценности</Reveal>
+          <Reveal as="p" className="eyebrow eyebrow--light">03 — Наши ценности</Reveal>
           <Reveal as="h2" id="values-title" className="section-title" delay={80}>
             На чём мы стоим
           </Reveal>

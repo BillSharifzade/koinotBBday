@@ -4,7 +4,9 @@
 // Local changes:
 // - touch listeners are passive and never call preventDefault(), so the page still
 //   scrolls on phones (the original blocked every touch on <body>);
-// - the scattering shader reads `vColor.rgb`, since three r18x declares vColor as vec4.
+// - the scattering shader reads `vColor.rgb`, since three r18x declares vColor as vec4;
+// - with followCursor={false} the pointer no longer steers an invisible sphere;
+// - the walls and floor sit inside the camera frustum, so no sphere is clipped.
 
 import { useEffect, useRef } from 'react';
 import {
@@ -689,6 +691,7 @@ function createBallpit(e, t = {}) {
   const h = S({
     domElement: e,
     onMove() {
+      if (!s.config.followCursor) return;
       n.setFromCamera(h.nPosition, i.camera);
       i.camera.getWorldDirection(o.normal);
       n.ray.intersectPlane(o, r);
@@ -711,8 +714,11 @@ function createBallpit(e, t = {}) {
     if (!c) s.update(e);
   };
   i.onAfterResize = e => {
-    s.config.maxX = e.wWidth / 2;
-    s.config.maxY = e.wHeight / 2;
+    // Shrink the box by the perspective at its front face, so spheres nearest the
+    // camera stay fully inside the canvas instead of being cut off at its edges.
+    const depth = (i.camera.position.z - s.config.maxZ) / i.camera.position.z;
+    s.config.maxX = (e.wWidth / 2) * depth;
+    s.config.maxY = (e.wHeight / 2) * depth;
   };
   return {
     three: i,

@@ -3,11 +3,13 @@
 Сайт: https://billsharifzade.github.io/koinotBBday/
 
 Праздничная страница к 35-летию Группы компаний «КОИНОТИ НАВ» (1991 — 2026).
-Фирменные цвета, шрифт DIN Pro и логотипы взяты с [koinotinav.tj](https://koinotinav.tj/).
+Фирменные цвета, шрифт DIN Pro и логотип взяты с [koinotinav.tj](https://koinotinav.tj/).
 
 - Фон с шарами — [`<Ballpit />`](src/components/Ballpit/Ballpit.jsx) (React Bits, three.js)
 - Электрический логотип, который превращается в «35» — [`<ElectricLogo />`](src/components/ElectricLogo/ElectricLogo.jsx) (React Bits, ogl)
-- Девиз «Верим. Можем. Создаём.», цифры, история 1991 — 2026, компании группы, ценности и 35 свечей
+- Девиз «Верим. Можем. Создаём.», цифры и ценности
+- 35 свечей, которые гаснут, если подуть в микрофон ([`useBlowDetector`](src/lib/useBlowDetector.js)).
+  Звук анализируется только в браузере и никуда не записывается; без микрофона — нажмите на торт.
 
 ## Запуск
 

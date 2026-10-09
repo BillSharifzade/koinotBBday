@@ -36,10 +36,10 @@ const Balloons = memo(function Balloons({ count }) {
         wallBounce={0.95}
         minSize={0.35}
         maxSize={0.8}
-        size0={1.2}
+        size0={0.2}
         ambientIntensity={1.1}
-        lightIntensity={260}
-        followCursor
+        lightIntensity={140}
+        followCursor={false}
       />
     </div>
   );
