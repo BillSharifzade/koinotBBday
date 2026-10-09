@@ -199,6 +199,7 @@ a {
   font: 700 16px/1 var(--font);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
   transition:
     transform 0.25s var(--ease),
@@ -226,6 +227,25 @@ a {
 
 .button--primary:active {
   transform: translateY(0) scale(0.98);
+}
+
+.button--ghost {
+  color: var(--white);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+
+@media (hover: hover) {
+  .button--ghost:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 0 0 1px var(--white);
+  }
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
 }
 
 .button--large {
@@ -905,6 +925,179 @@ a {
 @keyframes mic-pulse {
   50% {
     opacity: 0.45;
+  }
+}
+
+/* ───────── Congratulations ───────── */
+.congrats__inner {
+  display: grid;
+  gap: clamp(40px, 6vw, 72px);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .congrats__inner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+}
+
+.congrats__intro {
+  display: grid;
+  gap: 18px;
+}
+
+.congrats .section-title {
+  color: var(--white);
+}
+
+.congrats .section-title span {
+  color: var(--red);
+}
+
+.congrats__bot {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--line-dark);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 16px;
+  color: var(--on-dark-muted);
+}
+
+.congrats__bot svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--lavender-2);
+}
+
+.congrats__bot a {
+  font-weight: 700;
+  color: var(--white);
+  text-decoration-color: var(--red);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.congrats__card {
+  position: relative;
+  padding: clamp(22px, 3.5vw, 40px);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  background: rgba(21, 16, 28, 0.55);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.6);
+}
+
+.congrats__form {
+  display: grid;
+  gap: 20px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field__label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lavender-2);
+}
+
+.field__input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font: 400 17px/1.5 var(--font);
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.field__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.field__input:focus-visible {
+  outline: none;
+  border-radius: 14px;
+  border-color: var(--red-hot);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0 3px rgba(237, 46, 56, 0.28);
+}
+
+.field__input--area {
+  min-height: 168px;
+  resize: vertical;
+}
+
+.field__count {
+  justify-self: end;
+  font-size: 13px;
+  color: var(--on-dark-muted);
+}
+
+.congrats__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.congrats__error {
+  font-size: 15px;
+  color: #ff9aa0;
+}
+
+.congrats__form .button {
+  justify-self: start;
+}
+
+.congrats__note {
+  margin-top: -6px;
+  font-size: 14px;
+  color: var(--on-dark-muted);
+}
+
+.congrats__thanks {
+  display: grid;
+  gap: 14px;
+  font-size: 18px;
+  color: var(--on-dark-muted);
+  animation: rise 0.8s var(--ease) both;
+}
+
+.congrats__thanks:focus {
+  outline: none;
+}
+
+.congrats__thanks-title {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white);
+}
+
+.congrats__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 559px) {
+  .congrats__form .button,
+  .congrats__actions .button {
+    width: 100%;
   }
 }
 

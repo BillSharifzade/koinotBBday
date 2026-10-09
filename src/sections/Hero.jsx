@@ -5,7 +5,7 @@ import logoMark from '../assets/logo-mark.svg';
 import logoWhite from '../assets/logo-full-white.svg';
 import { renderTextImage } from '../lib/textImage.js';
 import { prefersReducedMotion } from '../lib/motion.js';
-import { cannons, salute } from '../lib/celebrate.js';
+import { cannons } from '../lib/celebrate.js';
 
 // Brand red, lavender and plum, with a few light "foil" balloons.
 const BALL_COLORS = ['#ED2E38', '#ED2E38', '#8775A4', '#F4F1F7', '#5A4B70', '#ED2E38', '#B9AAD3', '#ED2E38'];
@@ -114,10 +114,10 @@ export default function Hero() {
           <span className="hero__brand">КОИНОТИ НАВ!</span>
         </h1>
         <p className="hero__lead">Уже 35 лет мы верим, можем и создаём.</p>
-        <button type="button" className="button button--primary" onClick={() => salute()}>
+        <a className="button button--primary" href="#congratulate">
           <ConfettiIcon />
           Поздравить
-        </button>
+        </a>
       </div>
     </section>
   );

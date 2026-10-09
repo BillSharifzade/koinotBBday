@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kn-anniversary-bot",
+  "account_id": "870c52d94bad09a9878e0d156f8cfd65",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+  "durable_objects": {
+    "bindings": [{ "name": "HUB", "class_name": "Hub" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Hub"] }],
+  "vars": {
+    "BOT_USERNAME": "kn_anniversary_bot",
+    "SITE_URL": "https://billsharifzade.github.io/koinotBBday/",
+    // Pages that may post congratulations (the published site and local Vite servers).
+    "ALLOWED_ORIGINS": "https://billsharifzade.github.io,http://localhost:5173,http://localhost:4173"
+  }
+  // Secrets (wrangler secret put, or .dev.vars locally): BOT_TOKEN, WEBHOOK_SECRET.
+}
